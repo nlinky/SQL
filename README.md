@@ -103,3 +103,6 @@ SQL запросы и скрин диаграммы выгрузить на GitH
  7. Обновить таблицу Salary. Добавить varchar поле currency на 7 символов.
 
 [Таблицы](https://github.com/nlinky/SQL/blob/main/HW_3_diagram.png)
+ ________________________________________________________________________________________________
+ **Решение не менее 30 задач на сайте https://www.sql-ex.ru/register.php --- [Решение](https://github.com/nlinky/SQL/blob/main/tasks_sql-ex.sql)**
+ 
