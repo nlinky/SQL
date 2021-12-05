@@ -323,3 +323,114 @@ maker
 A
 B
 ----------------------------------------------------------------------
+Задание: 25
+Найдите производителей принтеров, которые производят ПК с наименьшим объемом RAM и с самым быстрым процессором среди всех ПК, имеющих наименьший объем RAM. Вывести: Maker
+
+SELECT DISTINCT maker 
+FROM Product 
+WHERE model IN (SELECT model FROM PC
+  WHERE ram IN (SELECT MIN(ram) FROM pc)
+  AND 
+  speed IN (SELECT MAX(speed) FROM PC
+  WHERE ram IN (SELECT MIN(ram) FROM PC))
+)
+AND
+maker IN (SELECT maker FROM Product
+  WHERE type = 'Printer');
+
+maker
+A
+E
+----------------------------------------------------------------------
+Задание: 31
+Для классов кораблей, калибр орудий которых не менее 16 дюймов, укажите класс и страну.
+
+SELECT DISTINCT class, country
+FROM Classes 
+WHERE bore >= 16;
+
+class		country
+Iowa		USA
+North Carolina	USA
+Yamato		Japan
+----------------------------------------------------------------------
+Задание: 33
+Укажите корабли, потопленные в сражениях в Северной Атлантике (North Atlantic). Вывод: ship.
+
+SELECT ship
+FROM Outcomes 
+WHERE battle = 'North Atlantic' AND result = 'sunk';
+
+ship
+Bismarck
+Hood
+----------------------------------------------------------------------
+Задание: 36
+Перечислите названия головных кораблей, имеющихся в базе данных (учесть корабли в Outcomes).
+
+SELECT DISTINCT name
+FROM Ships INNER JOIN Classes ON Classes.class = Ships.name
+UNION
+SELECT DISTINCT ship
+FROM Outcomes INNER JOIN Classes ON Outcomes.ship = Classes.class;
+
+name
+Bismarck
+Iowa
+Kongo
+North Carolina
+Renown
+Revenge
+Tennessee
+Yamato
+----------------------------------------------------------------------
+Задание: 38 
+Найдите страны, имевшие когда-либо классы обычных боевых кораблей ('bb') и имевшие когда-либо классы крейсеров ('bc').
+
+SELECT country
+FROM Classes 
+WHERE type = 'bb' 
+INTERSECT
+SELECT country
+FROM Classes 
+WHERE type = 'bc';
+
+country
+Gt.Britain
+Japan
+----------------------------------------------------------------------
+Задание: 42
+Найдите названия кораблей, потопленных в сражениях, и название сражения, в котором они были потоплены.
+
+SELECT ship, battle
+FROM Outcomes
+WHERE result = 'sunk';
+
+ship		battle
+Bismarck	North Atlantic
+Fuso		Surigao Strait
+Hood		North Atlantic
+Kirishima	Guadalcanal
+Schamhorst	North Cape
+Yamashiro	Surigao Strait
+----------------------------------------------------------------------
+Задание: 44 
+Найдите названия всех кораблей в базе данных, начинающихся с буквы R.
+
+SELECT name 
+FROM Ships 
+WHERE name LIKE 'R%'
+UNION 
+SELECT ship
+FROM Outcomes 
+WHERE ship LIKE 'R%'
+
+name
+Ramillies
+Renown
+Repulse
+Resolution
+Revenge
+Rodney
+Royal Oak
+Royal Sovereign
