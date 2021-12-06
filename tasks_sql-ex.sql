@@ -423,7 +423,7 @@ WHERE name LIKE 'R%'
 UNION 
 SELECT ship
 FROM Outcomes 
-WHERE ship LIKE 'R%'
+WHERE ship LIKE 'R%';
 
 name
 Ramillies
@@ -434,3 +434,21 @@ Revenge
 Rodney
 Royal Oak
 Royal Sovereign
+----------------------------------------------------------------------
+Задание: 45
+Найдите названия всех кораблей в базе данных, состоящие из трех и более слов (например, King George V).
+Считать, что слова в названиях разделяются единичными пробелами, и нет концевых пробелов.
+
+SELECT name
+FROM Ships 
+WHERE name LIKE '% % %'
+UNION
+SELECT ship
+FROM Outcomes 
+WHERE ship LIKE '% % %';
+
+name
+Duke of York
+King George V
+Prince of Wales
+----------------------------------------------------------------------
