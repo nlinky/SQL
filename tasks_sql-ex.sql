@@ -452,3 +452,17 @@ Duke of York
 King George V
 Prince of Wales
 ----------------------------------------------------------------------
+Задание: 48 
+Найдите классы кораблей, в которых хотя бы один корабль был потоплен в сражении.
+
+SELECT Classes.class
+FROM Classes INNER JOIN Outcomes ON Outcomes.ship = Classes.class
+WHERE result = 'sunk'
+UNION 
+SELECT class
+FROM Ships INNER JOIN Outcomes ON Ships.name = Outcomes.ship 
+WHERE result = 'sunk';
+
+class
+Bismarck
+Kongo
