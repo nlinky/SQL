@@ -486,3 +486,13 @@ North Carolina
 South Dakota
 Washington
 Wisconsin
+----------------------------------------------------------------------
+Задание: 50 
+Найдите сражения, в которых участвовали корабли класса Kongo из таблицы Ships.
+
+SELECT DISTINCT battle
+FROM Outcomes INNER JOIN Ships ON Outcomes.ship = Ships.name 
+WHERE class = 'Kongo';
+
+battle
+Guadalcanal
