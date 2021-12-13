@@ -496,3 +496,22 @@ WHERE class = 'Kongo';
 
 battle
 Guadalcanal
+----------------------------------------------------------------------
+Задание: 55 
+Для каждого класса определите год, когда был спущен на воду первый корабль этого класса. 
+Если год спуска на воду головного корабля неизвестен, определите минимальный год 
+спуска на воду кораблей этого класса. Вывести: класс, год.
+
+SELECT DISTINCT Classes.class, MIN(launched) AS year
+FROM Ships RIGHT JOIN Classes ON Ships.class = Classes.class
+GROUP BY Classes.class;
+
+class		year
+Bismarck	NULL
+Iowa		1943
+Kongo		1913
+North Carolina	1941
+Renown		1916
+Revenge		1916
+Tennessee	1920
+Yamato		1941
